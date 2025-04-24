@@ -9,7 +9,7 @@ export default function getConfig (env: NodeJS.ProcessEnv) {
     BACKSTAGE_API_TOKEN: get('BACKSTAGE_API_TOKEN').required().asString(),
 
     HTTP_HOST: get('HTTP_HOST').default('0.0.0.0').asString(),
-    HTTP_PORT: get('HTTP_PORT').default(8080).asPortNumber(),
+    HTTP_PORT: get('HTTP_PORT').default(5003).asPortNumber(),
 
     LOG_LEVEL: get('LOG_LEVEL').default('info').asEnum<Level>(Object.keys(levels.values) as Level[])
   }

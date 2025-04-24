@@ -1,4 +1,4 @@
-export type EntityKind = 'Component'|'System'|'Resource'|'API'|'Domain'|'Location'
+export type EntityKind = 'Component'|'System'|'Resource'|'API'|'Domain'|'Location'|'Group'|'Template'|'User'
 
 export type EntityBase = {
   metadata: {
@@ -57,7 +57,15 @@ export function createBackstageApiWrapper (params: { token: string, baseUrl: str
     },
 
     async getEntities (kind: EntityKind) {
-      return this._httpRequest(`api/catalog/entities/by-query?filter=kind=${kind.toLowerCase()}`)
+      return this._httpRequest(`api/catalog/entities/by-query?filter=kind=${kind.toLowerCase()}&limit=2000&orderField=metadata.name,asc`)
+    },
+
+    async getEntitiesMatchingName (kind: EntityKind, name: string) {
+        return this._httpRequest(`api/catalog/entities/by-query?filter=kind=${kind.toLowerCase()}&filter=metadata.name=${name}&orderField=metadata.name,asc&limit=1000`)
+    },
+
+    async searchSoftwareCatalogDocuments(query: string) {
+      return this._httpRequest(`api/search/query?term=${query}`)
     }
   }
 }

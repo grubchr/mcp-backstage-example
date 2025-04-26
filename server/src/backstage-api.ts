@@ -27,7 +27,7 @@ export type EntityBase = {
   
 }
 
-export type BackstageApiReponse<EntityType extends EntityBase> = {
+export type BackstageApiResponse<EntityType extends EntityBase> = {
   items: EntityType[]
 }
 

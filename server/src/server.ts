@@ -42,7 +42,12 @@ export default function getMcpServer(config: McpServerConfig) {
             const entities = await api.getEntities(kind);
 
             const text = JSON.stringify(entities.items.map((e: any) => {
-                return { uid: e.metadata.uid, name: e.metadata.name, description: e.metadata.description, tags: e.metadata.tags }
+                return {
+                    uid: e.metadata.uid,
+                    name: e.metadata.name,
+                    description: e.metadata.description,
+                    tags: e.metadata.tags
+                }
             }));
 
             return {
